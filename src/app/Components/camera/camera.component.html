@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="camera-container">
+    <div *ngIf="loading" class="loading-spinner">🔄</div>
+
+    <div *ngIf="!imgUrl && !loading" class="placeholder">
+      <span class="placeholder-icon">📷</span>
+      <span class="placeholder-text">No hay imagen</span>
+    </div>
+
+    <img *ngIf="imgUrl" [src]="imgUrl" alt="Imagen capturada" class="captured-image">
+
+    <div class="camera-footer">
+      <button (click)="takePicture()" class="camera-button">
+        <i class="fa fa-camera"></i> 
+      </button>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+</div>

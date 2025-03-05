@@ -1,0 +1,42 @@
+.gallery-container {
+  position: relative;
+  padding-top: 55px; /* Reducir el espacio superior */
+}
+
+.gallery-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Reducir el tamaño del encabezado */
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: linear-gradient(135deg, #007aff, #0056b3);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 22px; /* Reducir el tamaño del texto */
+  font-weight: bold;
+  z-index: 100;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 4px;
+  padding: 10px;
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+.photo:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}

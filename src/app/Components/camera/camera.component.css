@@ -1,0 +1,106 @@
+.camera-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    position: relative;
+  }
+  
+  /* Imagen capturada */
+  .captured-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Placeholder cuando no hay imagen */
+  .placeholder {
+    width: 200px;
+    height: 200px;
+    background-color: #1a1a1a;
+    border: 2px dashed #555;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  
+  .placeholder-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    opacity: 0.5;
+  }
+  
+  .placeholder-text {
+    font-size: 14px;
+    color: #999;
+  }
+  
+  /* Pie de cámara con botón */
+.camera-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* 🔽 Se redujo la altura */
+    background: linear-gradient(135deg, #007aff, #0056b3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+  }
+  
+  /* Botón de cámara */
+  .camera-button {
+    background: white;
+    border: none;
+    color: #007aff;
+    font-size: 20px; /* 🔽 Se redujo ligeramente el tamaño del icono */
+    padding: 12px; /* 🔽 Ajustado para un mejor equilibrio */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    width: 50px; /* 🔽 Se redujo el tamaño del botón */
+    height: 50px; /* 🔽 Se redujo el tamaño del botón */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  
+  /* Efecto hover */
+  .camera-button:hover {
+    background: #f0f0f0;
+    transform: scale(1.1);
+  }
+  
+  /* Mensaje de error */
+  .error-message {
+    margin-top: 15px;
+    color: #ff6b6b;
+    background-color: rgba(255, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 3px solid #ff6b6b;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  /* Animación de carga */
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
