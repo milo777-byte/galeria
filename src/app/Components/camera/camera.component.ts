@@ -1,22 +1,21 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { CameraService } from '../../camera/services/camera.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-camera',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './camera.component.html',
   styleUrls: ['./camera.component.css']
 })
 export class CameraComponent implements OnInit {
-  cameraService: CameraService = inject(CameraService);
   imgUrl: string = '';
   errorMessage: string = '';
   loading: boolean = false;
 
+  constructor(private cameraService: CameraService) {}
+
   ngOnInit() {
-    // 📸 Cargar la última imagen guardada al iniciar
     this.cameraService.photos$.subscribe((photos) => {
       if (photos.length > 0) {
         this.imgUrl = photos[photos.length - 1]; // Mostrar la última imagen
@@ -24,18 +23,20 @@ export class CameraComponent implements OnInit {
         this.imgUrl = ''; // Si no hay imágenes, limpiar el campo
       }
     });
+
+    this.cameraService.loadPhotos(); // Cargar imágenes guardadas
   }
 
   async takePicture() {
-    this.errorMessage = ''; // Limpiar errores anteriores
+    this.errorMessage = '';
+    this.loading = true;
 
     try {
-      this.loading = true;
       await this.cameraService.takePicture();
-      this.loading = false;
     } catch (error) {
       console.error('❌ Error al capturar imagen:', error);
       this.errorMessage = String(error);
+    } finally {
       this.loading = false;
     }
   }
